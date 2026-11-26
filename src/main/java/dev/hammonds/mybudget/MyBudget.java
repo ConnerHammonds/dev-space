@@ -1,4 +1,4 @@
-package dev.hammonds;
+package dev.hammonds.mybudget;
 
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.SpringApplication;
