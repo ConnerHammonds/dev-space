@@ -52,16 +52,16 @@ Plaid vocabulary:
 - [x] Install a JDK (Java 21 or newer) and check it with `java -version`. *(You have JDK 27.)*
 - [x] Create `pom.xml` with the Spring Boot parent, the web MVC starter and the `plaid-java` dependency.
 - [x] Run the app with `mvn spring-boot:run` and open `http://localhost:8080`. You should see "Yurrr".
-- [ ] Understand what each annotation on `MyBudget.java` does: `@SpringBootApplication`, `@ConfigurationPropertiesScan`, `@RestController`, `@RequestMapping`.
+- [x] Understand what each annotation on `MyBudget.java` does: `@SpringBootApplication`, `@ConfigurationPropertiesScan`, `@RestController`, `@RequestMapping`.
   Search: *@SpringBootApplication what does it do*, *spring component scan*
-- [ ] Move the `home()` endpoint out of `MyBudget.java` into its own controller class. Keep the main class only for starting the app.
-- [ ] Decide on a package layout. *(Started: the `plaid` package exists.)* Suggested: one package per feature, all under `dev.hammonds.mybudget`:
+- [x] Move the `home()` endpoint out of `MyBudget.java` into its own controller class. Keep the main class only for starting the app.
+- [x] Decide on a package layout. *(Started: the `plaid` package exists.)* Suggested: one package per feature, all under `dev.hammonds.mybudget`:
   `plaid`, `account`, `transaction`, `category`, `web` (pages).
   Note: `MyBudget.java` currently sits in `dev.hammonds`, one level above `mybudget`. That works, because Spring scans everything beneath the main class's package, but consider moving it into `dev.hammonds.mybudget`.
   Search: *spring boot package by feature*, *spring boot component scan base package*
 - [x] Get your Plaid **sandbox** keys from the Plaid dashboard and put them in `.env`.
 - [x] Create `PlaidProperties` and map `plaid.*` in `application.properties` to environment variables.
-- [ ] Make the app actually read `.env`. **Spring does not read `.env` files on its own.** Options: export the variables in your shell before running, set them in your IDE run configuration, or use a small plugin/library that loads `.env`.
+- [x] Make the app actually read `.env`. **Spring does not read `.env` files on its own.** Options: export the variables in your shell before running, set them in your IDE run configuration, or use a small plugin/library that loads `.env`.
   Search: *spring boot environment variables application.properties*, *spring boot dotenv*
 
 **Checkpoint:** the app starts, `/` responds, and the Plaid values from `.env` reach `PlaidProperties` (temporarily log them, then remove the log, and never commit secrets).
@@ -72,9 +72,9 @@ Plaid vocabulary:
 
 Not features. These are the ideas everything else uses. Do a tiny experiment for each.
 
-- [ ] **Beans and the application context**: Spring creates objects for you and keeps them in a container.
+- [x] **Beans and the application context**: Spring creates objects for you and keeps them in a container.
   Search: *spring bean*, *spring application context*
-- [ ] **Dependency injection through the constructor**: a class asks for what it needs in its constructor, and Spring passes it in.
+- [x] **Dependency injection through the constructor**: a class asks for what it needs in its constructor, and Spring passes it in.
   Search: *spring constructor injection*
 - [ ] **`@Component`, `@Service`, `@Repository`, `@Controller`, `@RestController`**: what each one tells Spring.
   Search: *spring stereotype annotations*
@@ -96,12 +96,12 @@ Not features. These are the ideas everything else uses. Do a tiny experiment for
 - [x] Read up on the Plaid Link flow: Items, link token → public token → access token. *(Your notes are in `PlaidController.java`.)*
 - [ ] Read Plaid's Transactions overview, especially `/transactions/sync`.
   Search: *Plaid quickstart*, *Plaid transactions overview*, *Plaid sandbox test credentials*
-- [ ] Rewrite `PlaidConfig.java` yourself, so you understand every line. It builds the `PlaidApi` bean from `PlaidProperties`.
-- [ ] Fix the hardcoded environment: right now it always uses `ApiClient.Sandbox`. Make it choose the Plaid environment based on `plaid.environment`.
+- [x] Rewrite `PlaidConfig.java` yourself, so you understand every line. It builds the `PlaidApi` bean from `PlaidProperties`.
+- [x] Fix the hardcoded environment: right now it always uses `ApiClient.Sandbox`. Make it choose the Plaid environment based on `plaid.environment`.
   Search: *plaid-java ApiClient environment*
-- [ ] Learn how the Java SDK makes calls: you build a request object, call a method on `PlaidApi`, then `.execute()`, which gives you a `Response`. Check whether it succeeded before reading the body.
+- [x] Learn how the Java SDK makes calls: you build a request object, call a method on `PlaidApi`, then `.execute()`, which gives you a `Response`. Check whether it succeeded before reading the body.
   Search: *plaid-java README*, *retrofit Response isSuccessful errorBody*
-- [ ] Write a throwaway test endpoint that makes one simple Plaid call (for example, creating a link token) and prints the result. This shows your keys and setup work.
+- [x] Write a throwaway test endpoint that makes one simple Plaid call (for example, creating a link token) and prints the result. This shows your keys and setup work.
 
 **Checkpoint:** one Plaid API call succeeds from your app in sandbox.
 
